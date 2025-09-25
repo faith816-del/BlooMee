@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/bloomee-logo.jpeg" alt="BlooMee Logo" width="120" />
+  <img src="assets/bloomee-logo.jpeg" alt="BlooMee Logo" width="100" height="100" style="border-radius: 50%;">
 </p>
 
 <h1 align="center">🌸 BlooMee</h1>
