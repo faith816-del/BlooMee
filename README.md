@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="assets/bloomee-logo.png" alt="BlooMint Logo" width="120" />
+  <img src="assets/bloomee-logo.png" alt="BlooMee Logo" width="120" />
 </p>
 
-<h1 align="center">🌸 BlooMint</h1>
+<h1 align="center">🌸 BlooMee</h1>
 # 🌸 BlooMee — Feminine Health & Hygiene Platform  
 
-![BlooMee Logo](assets/logo.png)
+![BlooMee Logo](assets/bloomee-logo.png)
 
 > **BlooMee** is a responsive website and progressive web app designed to improve **feminine health, hygiene, and well-being** through education, e-commerce, health tracking, and accessible telehealth.  
 
