@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="assets/bloomee-logo.png" alt="BlooMee Logo" width="120" />
+  <img src="assets/bloomee-logo.jpeg" alt="BlooMee Logo" width="120" />
 </p>
 
 <h1 align="center">🌸 BlooMee</h1>
 # 🌸 BlooMee — Feminine Health & Hygiene Platform  
 
-![BlooMee Logo](assets/bloomee-logo.png)
+![BlooMee Logo](assets/bloomee-logo.jpeg)
 
 > **BlooMee** is a responsive website and progressive web app designed to improve **feminine health, hygiene, and well-being** through education, e-commerce, health tracking, and accessible telehealth.  
 
@@ -82,7 +82,7 @@ BlooMee also supports SDG 4 by offering accessible **reproductive health educati
 
 ## 🎨 Branding  
 - **Colors:** Sage Green 🌿, Burgundy 🍷, Terracotta 🧡, Ivory 🌸.  
-- **Logo:** ![BlooMee Logo](assets/logo.png)  
+- **Logo:** ![BlooMee Logo](assets/bloomee-logo.jpeg)  
 - **App Icon:** Designed to reflect calm, feminine strength, and trust.  
 
 ---
