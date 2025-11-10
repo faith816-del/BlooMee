@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlooMee | Doctor Support</title>
+  <link rel="stylesheet" href="doctor.css" />
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header class="main-header">
+    <div class="logo">
+      <img src="assets/bloomee-logo.jpeg" alt="BlooMee Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="ai-buddy.html">AI Buddy</a></li>
+        <li><a href="period-tracker.html">Period Tracker</a></li>
+        <li><a href="ngo.html">NGO</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Intro Section -->
+  <section class="intro">
+    <h1>👩🏾‍⚕️ Welcome to BlooMee Doctors</h1>
+    <p>Your health, comfort, and confidence matter.  
+    Talk to trusted female health professionals and learn more about your body —  
+    before, during, and after your period.</p>
+    <p>We are affordable, private, and always one text away. Your comfort, confidence, and health come first.
+      At BlooMee🌸, we connect you with friendly, trusted women's health specialists
+      who truly understand your body — from puberty and menstrual cycles to reproductive health and beyond.
+    </p>
+    <p>Whether you have questions about your period, need advice on managing symptoms, or want to discuss
+       reproductive health concerns, our doctors are here to support you every step of the way.</p>
+    <p>Feel free to reach out anytime. Your journey to better health starts here!</p>
+  </section>
+
+  <!-- Doctors Section -->
+  <section class="doctor-section">
+    <h2>Meet Our Caring Professionals</h2>
+    <div class="doctor-grid">
+      <div class="doctor-card">
+        <img src="assets/doctor1.jpeg" alt="Doctor A" />
+        <h3>Dr. Achieng' Wanjiku</h3>
+        <p>Specialist in menstrual and reproductive health.</p>
+        <div class="doctor-actions">
+          <button onclick="document.querySelector('.booking-section').scrollIntoView({behavior: 'smooth'})">📅 Book Appointment</button>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="assets/doctor2.jpeg" alt="Doctor B" />
+        <h3>Dr. Fatma Hassan</h3>
+        <p>Nutrition and wellness expert for hormonal balance.</p>
+        <div class="doctor-actions">
+          <button onclick="document.querySelector('.booking-section').scrollIntoView({behavior: 'smooth'})">📅 Book Appointment</button>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="assets/doctor3.jpeg" alt="Doctor C" />
+        <h3>Dr. Grace Mutua</h3>
+        <div class="doctor-actions">
+        <p>Focus on adolescent and mental health support.</p>
+          <button onclick="document.querySelector('.booking-section').scrollIntoView({behavior: 'smooth'})">📅 Book Appointment</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational Videos -->
+  <section class="video-section">
+    <h2 class="video-heading">🎥 BlooMee Educational Videos</h2>
+    <div class="video-container">
+      <div class="video-card" onclick="window.open('https://www.youtube.com/watch?v=zcvo9VLVHWc', '_blank')">
+        <img src="https://img.youtube.com/vi/zcvo9VLVHWc/hqdefault.jpg" alt="Menstrual Cycle Basics">
+        <span class="play-icon">▶</span>
+        <h4>Menstrual Cycle Basics (3D Animation)</h4>
+      </div>
+
+      <div class="video-card" onclick="window.open('https://www.youtube.com/watch?v=1SD_29gnFu0','_blank')">
+        <img src="https://img.youtube.com/vi/1SD_29gnFu0/hqdefault.jpg" alt="Eating for your cycle">
+        <span class="play-icon">▶</span>
+        <h4>Eating for Your Cycle (Cycle Syncing Diet)</h4>
+      </div>
+
+      <div class="video-card" onclick="window.open('https://www.youtube.com/watch?v=7HlHGLr1hTA','_blank')">
+        <img src="https://img.youtube.com/vi/7HlHGLr1hTA/hqdefault.jpg" alt="Menstrual cycle basics">
+        <span class="play-icon">▶</span>
+        <h4>Menstrual Cycle Basics</h4>
+      </div>
+
+      <div class="video-card" onclick="window.open('https://www.youtube.com/watch?v=qgry0uCa_wM','_blank')">
+        <img src="https://img.youtube.com/vi/qgry0uCa_wM/hqdefault.jpg" alt="Foods to help during menstruation">
+        <span class="play-icon">▶</span>
+        <h4>Foods That Help During Menstruation</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Pre-Check Assistant -->
+  <section class="ai-check">
+    <h2>🤖 Quick AI Check</h2>
+    <p>Ask your BlooMee AI Buddy a quick health question to know if you need a doctor’s visit.</p>
+    
+    <div class="ai-box">
+      <input type="text" class="ai-input" placeholder="Ask something simple like 'I have cramps for 3 days...'" />
+      <button class="ai-send-btn">Ask AI</button>
+    </div>
+
+    <div class="ai-response-box">
+      <p>💬 Your AI responses will appear here.</p>
+    </div>
+  </section>
+
+ <!-- Booking Section -->
+<section class="booking-section" 
+  style="max-width: 700px; margin: 60px auto; padding: 30px; border: 1px solid #ddd; border-radius: 12px; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+
+  <h2 style="text-align:center; margin-bottom:20px; color:#d38c9d;">
+    🩺 Book a Session with Our Doctors
+  </h2>
+
+  <p style="text-align:center; color:#0a0909; margin-bottom:30px;">
+    Fill in your details below to schedule a confidential consultation with one of our friendly BlooMee doctors.
+  </p>
+
+  <form id="booking-form" action="#" method="post" 
+        style="display:flex; flex-direction:column; gap:15px;">
+    <input type="text" id="name" placeholder="Full Name" required 
+           style="padding:12px; border:1px solid #ccc; border-radius:8px; font-size:15px;">
+    <input type="tel" id="phone" placeholder="Phone Number" required 
+           style="padding:12px; border:1px solid #ccc; border-radius:8px; font-size:15px;">
+    <input type="email" id="email" placeholder="Email Address" required 
+           style="padding:12px; border:1px solid #ccc; border-radius:8px; font-size:15px;">
+
+    <select id="doctor" required 
+            style="padding:12px; border:1px solid #571d1d; border-radius:8px; font-size:15px;">
+      <option value="">Select Doctor</option>
+      <option value="Dr. Achieng' Wanjiku">Dr. Achieng' Wanjiku</option>
+      <option value="Dr. Fatma Hassan">Dr. Fatma Hassan</option>
+      <option value="Dr. Grace Mutua">Dr. Grace Mutua</option>
+    </select>
+
+    <textarea id="concern" placeholder="Describe your concern..." required 
+              style="padding:12px; border:1px solid #ccc; border-radius:8px; font-size:15px; min-height:120px;"></textarea>
+
+    <button type="submit" 
+            style="padding:14px; background:#d38c9d; color:rgb(12,11,11); border:none; border-radius:10px; 
+            font-size:16px; font-weight:bold; cursor:pointer; transition:0.3s;">
+      📅 Book Now
+    </button>
+  </form>
+
+  <!-- Fade-in success message -->
+  <p id="booking-message" 
+     style="display:none; color:green; font-weight:bold; text-align:center; margin-top:15px; transition:opacity 0.5s;">
+  </p>
+</section>
+
+<script>
+  // === Booking Form Submission ===
+  const bookingForm = document.getElementById("booking-form");
+  const bookingMessage = document.getElementById("booking-message");
+
+  bookingForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const fullName = document.getElementById("name").value.trim();
+    const phoneNumber = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const doctor = document.getElementById("doctor").value.trim();
+    const concern = document.getElementById("concern").value.trim();
+
+    if (!fullName || !phoneNumber || !email || !doctor || !concern) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailOk) { alert("Please enter a valid email address."); return; }
+
+    try {
+      const res = await fetch("http://localhost:5000/api/book-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullName, phoneNumber, email, doctor, concern })
+      });
+      const data = await res.json();
+      if (!res.ok) { alert(data.message || "Failed to book appointment."); return; }
+
+      bookingMessage.textContent = "✅ Appointment booked successfully. You will receive an email from the doctor with further explanation.";
+      bookingMessage.style.display = "block";
+      bookingMessage.style.opacity = 0;
+      let opacity = 0;
+      const fade = setInterval(() => {
+        opacity += 0.05;
+        bookingMessage.style.opacity = opacity;
+        if (opacity >= 1) clearInterval(fade);
+      }, 50);
+      bookingForm.reset();
+      setTimeout(() => { bookingMessage.style.display = "none"; }, 5000);
+    } catch (err) {
+      alert("Network error. Please try again.");
+    }
+  });
+</script>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script>
+    // Load footer
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-container").innerHTML = data);
+
+    // Check login
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Access denied. Please log in first.");
+      window.location.href = "login.html";
+    }
+
+
+  // === Quick AI Check ===
+  const aiInput = document.querySelector(".ai-input");
+  const aiButton = document.querySelector(".ai-send-btn");
+  const aiResponseBox = document.querySelector(".ai-response-box");
+
+  aiButton.addEventListener("click", async () => {
+    const userQuestion = aiInput.value.trim();
+    if (!userQuestion) return;
+
+    aiResponseBox.innerHTML += `<p><strong>You:</strong> ${userQuestion}</p>`;
+    aiInput.value = "";
+
+    try {
+      const res = await fetch("http://localhost:5000/api/doctor-ai", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userQuestion }),
+      });
+
+      const data = await res.json();
+      aiResponseBox.innerHTML += `<p><strong>AI:</strong> ${data.reply}</p>`;
+    } catch (err) {
+      aiResponseBox.innerHTML += `<p style="color:red;">⚠️ Error connecting to AI server.</p>`;
+    }
+
+    aiResponseBox.scrollTop = aiResponseBox.scrollHeight;
+  });
+</script> 
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlooMee | Period Tracker</title>
+  <link rel="stylesheet" href="period-tracker.css" />
+  <style>
+    /* 💕 Fade-in + Slide animation for AI responses */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeSlideIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Optional: smooth background for response */
+    .ai-response {
+      background-color: #ffd6e0;
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 1em;
+      color: #0e0b0b;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+    }
+
+    /* Navbar */
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #b3d8ff; /* baby blue background */
+      color: #0a0808;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #d38c9d; /* cherry soda */
+      padding: 10px 20px;
+    }
+
+    .navbar .logo img {
+      height: 45px;
+      border-radius: 50%;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: black;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: white;
+    }
+
+    /* Welcome Section */
+    .welcome {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* Tracker Box */
+    .tracker-container {
+      background: white;
+      width: 90%;
+      max-width: 700px;
+      margin: 100px auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+      transition: background-color 0.5s ease;
+    }
+
+    /* Peekaboo Mood Selectors */
+    .mood-selectors {
+  position: relative;
+  display: flex;
+  justify-content: center; /* centers the group horizontally */
+  gap: 60px; /* space between characters */
+  margin-top: 40px; /* space below header */
+  margin-bottom: -70px; /* overlap halfway with the box */
+  z-index: 2; /* make sure it's above background */
+}
+
+.mood-selectors img {
+  width: 90px;
+  height: 90px;
+    border-radius: 50%;  /* makes images circular */
+    object-fit: cover; /* ensures image covers the circle */
+  position: relative;
+  top: 50px; /* shifts the characters halfway behind the box */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s ease;
+}
+
+.mood-selectors img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.02);
+}
+    
+
+    /* Form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #d38c9d;
+      border: none;
+      padding: 12px;
+      color: white;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #c0788b;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .talk-btn {
+      background-color: #beeaf8;
+      color: rgb(12, 11, 11);
+      padding: 12px 15px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .talk-btn:hover {
+      background-color: #9cd5ff
+    }
+
+    /* Center footer social links on all pages */
+.footer-social {
+  display: flex;
+  justify-content: center;  /* centers horizontally */
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.footer-social a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.footer-social a:hover {
+  color: #d38c9d; /* pink highlight when hovering */
+}
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/bloomee-logo.jpeg" alt="BlooMee Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="ai-buddy.html">AI Buddy</a></li>
+        <li><a href="doctor.html">Doctor</a></li>
+        <li><a href="ngo.html">NGO</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Welcome Section -->
+  <section class="welcome">
+    <h1>💕 Welcome to your BlooMee Period Tracker!</h1>
+    <p>Let’s understand your cycle and care for your body together 💕<br>What mood are we in today, love?</p>
+  </section>
+
+  <!-- Mood Selectors -->
+  <div class="mood-selectors">
+    <img src="assets/characters/joy.png" alt="Joy" data-color="#f6d110">
+    <img src="assets/characters/anger.png" alt="Anger" data-color="#b00000">
+    <img src="assets/characters/disgust.png" alt="Disgust" data-color="#499568">
+    <img src="assets/characters/fear.png" alt="Fear" data-color="#c8a2c8">
+    <img src="assets/characters/sadness.png" alt="Sadness" data-color="#3978b6">
+  </div>
+
+  <!-- Tracker Form -->
+  <section class="tracker-container" id="tracker-box">
+    <h2>📅 Add Your Cycle Info</h2>
+    <form id="cycle-form">
+      <label>Start Date:</label>
+      <input type="date" id="start-date" required>
+
+      <label>End Date:</label>
+      <input type="date" id="end-date" required>
+
+      <label>Symptoms:</label>
+      <input type="text" id="symptoms" placeholder="e.g. cramps, headache...">
+
+      <label>Mood:</label>
+      <input type="text" id="mood" placeholder="e.g. happy, tired...">
+
+      <button type="submit">Save My Cycle 💖</button>
+    </form>
+
+    <div class="ai-response fade-in" id="ai-response">
+      💬 Hey love 💕 I'm your BlooMee Buddy. Once you add your cycle info, I’ll tell you your next predicted date!
+    </div>
+
+    <div class="buttons">
+      <button id="predict-btn">🩸 Predict Next Period</button>
+      <a href="ai-buddy.html" class="talk-btn">💬 Talk to BlooMee Buddy</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-container").innerHTML = data);
+
+    const form = document.getElementById('cycle-form');
+    const aiResponse = document.getElementById('ai-response');
+    const predictBtn = document.getElementById('predict-btn');
+    const trackerBox = document.getElementById('tracker-box');
+
+    // Function to show message with animation
+    function showAIMessage(message) {
+      aiResponse.classList.remove('fade-in'); // reset animation
+      void aiResponse.offsetWidth; // trigger reflow
+      aiResponse.innerHTML = message;
+      aiResponse.classList.add('fade-in'); // play animation
+    }
+
+    // Handle form submission
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const token = localStorage.getItem('token');
+      if (!token) { alert('Please log in first.'); return; }
+
+      const startDate = document.getElementById('start-date').value;
+      const endDate = document.getElementById('end-date').value;
+      const symptoms = document.getElementById('symptoms').value;
+      const mood = document.getElementById('mood').value;
+
+      if (!startDate || !endDate) {
+        showAIMessage("💬 Love, please fill in both start and end dates so I can help you better 💕");
+        return;
+      }
+
+      try {
+        const res = await fetch('http://localhost:5000/api/periods/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+          body: JSON.stringify({ startDate, endDate, symptoms, notes: mood })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          showAIMessage(data.message || '⚠️ Sorry, I could not save that right now.');
+          return;
+        }
+        showAIMessage(`
+          💕 Got it, love! I’ve saved your cycle from <b>${startDate}</b> to <b>${endDate}</b>.<br>
+          I’ll track that for you and remind you soon! 🌸
+        `);
+        form.reset();
+      } catch (_) {
+        showAIMessage('⚠️ Network error. Please try again.');
+      }
+    });
+
+    // Handle prediction
+    predictBtn.addEventListener('click', async () => {
+      const token = localStorage.getItem('token');
+      if (!token) { alert('Please log in first.'); return; }
+      try {
+        const res = await fetch('http://localhost:5000/api/periods/predict', { headers: { 'Authorization': `Bearer ${token}` } });
+        const data = await res.json();
+        if (!res.ok) { showAIMessage('⚠️ Could not predict right now.'); return; }
+        if (!data.nextStart) { showAIMessage('💬 Add at least one cycle, love, then I’ll predict for you 🌸'); return; }
+        const next = new Date(data.nextStart);
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        aiResponse.innerHTML = `
+          💬 Based on your cycles, your next period might start around <b>${next.toLocaleDateString(undefined, options)}</b>.
+          <div class="response-buttons" style="margin-top:10px;">
+            <button class="yes-btn">Yes 💕</button>
+            <button class="no-btn">No, maybe later</button>
+          </div>
+        `;
+        document.querySelector('.yes-btn').addEventListener('click', () => {
+          showAIMessage("✨ Awesome! I’ll remind you 2 days before your next period, love 💖");
+        });
+        document.querySelector('.no-btn').addEventListener('click', () => {
+          showAIMessage("💬 No worries, love. You can ask me anytime for a reminder 🌸");
+        });
+      } catch (_) {
+        showAIMessage('⚠️ Network error. Please try again.');
+      }
+    });
+
+    // Handle mood selector clicks
+    document.querySelectorAll('.mood-selectors img').forEach(img => {
+      img.addEventListener('click', () => {
+        const color = img.getAttribute('data-color');
+        trackerBox.style.backgroundColor = color;
+      });
+    });
+  </script>
+
+  <script>
+  // Check if token exists
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    // No token → redirect to login
+    alert('Access denied. Please log in first.');
+    window.location.href = 'login.html';
+  }
+</script>
+</body>
+</html>

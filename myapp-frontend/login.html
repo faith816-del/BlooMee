@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BlooMee 🌸 | Login</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: #d38c9d;
+    position: relative;
+  }
+  .login-box { margin-right: 9vw; }
+  header { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; z-index: 20; }
+  header img { height: 45px; border-radius: 50%; }
+  header nav a { color: white; margin-left: 20px; text-decoration: none; font-size: 0.95rem; transition: 0.3s; }
+  header nav a:hover { text-decoration: underline; }
+  .background { position: absolute; inset: 0; display: flex; height: 100vh; overflow: hidden; z-index: 0; }
+  .bg-image { flex: 1; background: url("assets/bg-image.jpg") no-repeat center center/cover; filter: brightness(0.9); z-index: 0; }
+  .bg-color { flex: 0.5; background: #d38c9d; position: relative; z-index: 1; }
+  .curve-divider { position: absolute; top: 0; left: -7vw; width: 120vw; height: 100%; z-index: 1; pointer-events: none; }
+  .bg-color::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.3) 60%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmerMove 8s infinite linear;
+    pointer-events: none;
+  }
+  @keyframes shimmerMove { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+  .droplet { position: absolute; background: rgba(180, 3, 3, 0.1); border-radius: 50%; backdrop-filter: blur(3px); animation: float 6s infinite ease-in-out alternate; }
+  .droplet:nth-child(1) { width: 40px; height: 40px; top: 25%; left: 18%; animation-delay: 0s; }
+  .droplet:nth-child(2) { width: 30px; height: 30px; top: 60%; left: 25%; animation-delay: 2s; }
+  .droplet:nth-child(3) { width: 60px; height: 60px; top: 45%; left: 10%; animation-delay: 4s; }
+  @keyframes float { from { transform: translateY(0); } to { transform: translateY(-15px); } }
+  .login-box {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 40px 35px;
+    border-radius: 25px;
+    width: clamp(320px, 35vw, 400px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    color: #000;
+    text-align: center;
+  }
+  .login-box h1 { font-size: 1.8rem; font-weight: 700; }
+  .login-box p { margin-bottom: 20px; font-size: 1rem; }
+  .btn { width: 100%; padding: 12px; border: none; border-radius: 15px; font-weight: 600; cursor: pointer; margin-top: 12px; transition: all 0.3s ease; font-size: 0.95rem; }
+  .btn:hover { transform: scale(1.05); }
+  .btn.google { background: #800020; color: #fff; }
+  .btn.facebook { background: #1877f2; color: #fff; }
+  .btn.email { background: #f7c1d0; color: #800020; }
+  .btn.signup { background: #f7c1d0; color: #800020; }
+  .terms { font-size: 0.8rem; margin-top: 15px; color: #0f0e0e; }
+  .terms span, .terms a { color: #800020; text-decoration: none; font-weight: 600; }
+  @media (max-width: 768px) {
+    body { flex-direction: column; }
+    header { flex-direction: column; text-align: center; padding: 15px; }
+    .bg-image { display: none; }
+    .login-box { width: 90%; margin: 20px auto; }
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } 
+  }
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/bloomee-logo.jpeg" alt="BlooMee Logo">
+  <nav>
+  <a href="#" data-popup="about">About</a>
+  <a href="#" data-popup="contact">Contact</a>
+  <a href="#" data-popup="privacy">Privacy</a>
+  <a href="#" data-popup="terms">Terms</a>
+  <a href="#" data-popup="help">Help</a>
+</nav>
+</header>
+
+<div class="background">
+  <div class="bg-image"></div>
+  <div class="bg-color">
+    <svg class="curve-divider" viewBox="0 0 1200 800" preserveAspectRatio="none">
+      <path d="M0,600 C300,500 900,700 1200,600 L1200,800 L0,800 Z" fill="#d38cd9"></path>
+    </svg>
+  </div>
+</div>
+
+<div class="login-box">
+  <h1>Welcome to BlooMee 🌸</h1>
+  <p>Log in or sign up in a few seconds</p>
+  <button class="btn google">Continue with Google</button>
+  <button class="btn facebook">Continue with Facebook</button>
+  <button class="btn email">Continue with Email</button>
+  <button class="btn signup">New Here? Sign Up 🌸</button>
+
+  <p class="terms">
+    By continuing, you agree to <span>BlooMee 🌸’s</span>
+    <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+  </p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Social buttons
+  const backendBase = "http://localhost:5000";
+  document.querySelector(".btn.google").addEventListener("click", () => {
+    window.location.href = `${backendBase}/api/auth/google`;
+  });
+  document.querySelector(".btn.facebook").addEventListener("click", () => {
+    alert("Coming soon");
+  });
+
+  // Email Login Modal
+  const loginModal = document.createElement("div");
+  loginModal.innerHTML = `
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <h2>Login with Email</h2>
+        <input type="email" id="emailInput" placeholder="Email" required>
+        <input type="password" id="passwordInput" placeholder="Password" required>
+        <button id="submitLogin">Continue</button>
+        <button id="cancelLogin" class="cancel">Cancel</button>
+      </div>
+    </div>`;
+  document.body.appendChild(loginModal);
+
+  // Sign Up Modal
+  const signupModal = document.createElement("div");
+  signupModal.innerHTML = `
+    <div id="signupModal" class="modal">
+      <div class="modal-content">
+        <h2>Sign Up</h2>
+        <input type="text" id="nameInput" placeholder="Full Name" required>
+        <input type="email" id="signupEmail" placeholder="Email" required>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <button id="submitSignup">Sign Up</button>
+        <button id="cancelSignup" class="cancel">Cancel</button>
+      </div>
+    </div>`;
+  document.body.appendChild(signupModal);
+
+  // Modal Styles
+  const style = document.createElement("style");
+  style.textContent = `
+    .modal { display:none; position: fixed; inset:0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); justify-content:center; align-items:center; z-index:9999; }
+    .modal-content { background:white; padding:30px 25px; border-radius:20px; width:320px; box-shadow:0 5px 25px rgba(0,0,0,0.2); text-align:center; animation:fadeIn 0.3s ease; }
+    .modal-content h2 { margin-bottom:15px; color:#800020; }
+    .modal-content input { width:90%; padding:10px; margin:8px 0; border-radius:10px; border:1px solid #ccc; }
+    .modal-content button { width:90%; padding:10px; border:none; border-radius:10px; font-weight:600; cursor:pointer; margin-top:10px; }
+    .modal-content button#submitLogin, .modal-content button#submitSignup { background:#800020; color:white; }
+    .modal-content button.cancel { background:#ddd; }
+    @keyframes fadeIn { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
+  `;
+  document.head.appendChild(style);
+
+  // Open Modals
+  document.querySelector(".btn.email").addEventListener("click", () => { document.querySelector("#loginModal").style.display="flex"; });
+  document.querySelector(".btn.signup").addEventListener("click", () => { document.querySelector("#signupModal").style.display="flex"; });
+
+  // Close Modals
+  document.querySelector("#cancelLogin").addEventListener("click", () => { document.querySelector("#loginModal").style.display="none"; });
+  document.querySelector("#cancelSignup").addEventListener("click", () => { document.querySelector("#signupModal").style.display="none"; });
+
+  // Submit Login
+  document.querySelector("#submitLogin").addEventListener("click", async () => {
+    const email = document.querySelector("#emailInput").value.trim();
+    const password = document.querySelector("#passwordInput").value.trim();
+    if(!email||!password){alert("Please fill in both email and password."); return;}
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({email,password})});
+      const data = await res.json();
+      if(data.token){localStorage.setItem("token", data.token); document.querySelector("#loginModal").style.display="none"; alert("Login successful!"); window.location.href="onboarding.html";}
+      else alert(data.message || "Login failed");
+    } catch(err){console.error(err); alert("Error connecting to server.");}
+  });
+
+// Submit Sign Up
+document.querySelector("#submitSignup").addEventListener("click", async () => {
+  const name = document.querySelector("#nameInput").value.trim();
+  const email = document.querySelector("#signupEmail").value.trim();
+  const password = document.querySelector("#signupPassword").value.trim();
+  if(!name||!email||!password){alert("Please fill in all fields."); return;}
+  try {
+    const res = await fetch("http://localhost:5000/api/auth/signup", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({name,email,password})});
+    const data = await res.json();
+    console.log(data); // check in browser console
+    if(data.token){localStorage.setItem("token", data.token); document.querySelector("#signupModal").style.display="none"; alert("Signup successful!"); window.location.href="onboarding.html";}
+    else alert(data.message || "Signup failed");
+  } catch(err){console.error(err); alert("Error connecting to server.");}
+});
+});
+</script>
+
+<!-- Removed token gate here to avoid redirect loop on login page -->
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  // Load popup.html dynamically
+  const popupHTML = await fetch("popup.html").then(res => res.text());
+  document.getElementById("popupContainer").innerHTML = popupHTML;
+
+  const popup = document.getElementById("infoPopup");
+  const popupBody = document.getElementById("popupBody");
+  const closePopup = document.getElementById("closePopup");
+
+  // Close popup
+  closePopup.addEventListener("click", () => popup.style.display = "none");
+
+  // Define your nav link content
+  const popupData = {
+    about: `
+      <h2>About BlooMee</h2>
+      <p>BlooMee is your personal wellness companion designed to help women track, connect, and thrive through AI-assisted support.</p>
+    `,
+    contact: `
+      <h2>Contact Us</h2>
+      <p>Email: care@bloomee.com</p>
+      <p>Instagram: <a href="#">@bloomeeapp</a></p>
+      <p>TikTok: <a href="#">@bloomee.official</a></p>
+    `,
+    privacy: `
+      <h2>Privacy Policy</h2>
+      <p>We respect your privacy. All personal data is securely stored and never shared with third parties.</p>
+    `,
+    terms: `
+      <h2>Terms of Use</h2>
+      <p>By using BlooMee, you agree to our community standards and data protection practices.</p>
+    `,
+    help: `
+      <h2>Help & Support</h2>
+      <p>Need assistance? Visit our FAQ or contact support at care@bloomee.com.</p>
+    `
+  };
+
+  // Attach click events for nav links
+  document.querySelectorAll("[data-popup]").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const type = link.getAttribute("data-popup");
+      popupBody.innerHTML = popupData[type] || "<p>Coming soon...</p>";
+      popup.style.display = "flex";
+    });
+  });
+});
+</script>
+<!-- Include reusable popup -->
+<div id="popupContainer"></div>
+</body>
+</html>

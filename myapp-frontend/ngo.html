@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlooMee | NGO Support</title>
+  <link rel="stylesheet" href="ngo.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="logo">
+      <img src="assets/bloomee-logo.jpeg" alt="BlooMee Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="ai-buddy.html">AI Buddy</a></li>
+        <li><a href="period-tracker.html">Period Tracker</a></li>
+        <li><a href="doctor.html">Doctors</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Intro Section -->
+  <section class="intro">
+  <h1>🌍 BlooMee Cares</h1>
+  <p>
+    At <b>BlooMee</b>, we believe that every girl and woman deserves the right to live with
+     dignity — 
+    free from the barriers of period poverty, shame, and inaccessibility. 
+  </p>
+  <p>
+    Through our partnerships with leading Kenyan organizations such as 
+    <b>Inua Dada Foundation</b>, <b>My Flow Foundation</b>, and <b>Girl Aid Foundation</b>, 
+    we’re building sustainable bridges that connect compassion, education, and action. 
+    Together, we work to ensure every community has access to menstrual health education, 
+    affordable hygiene products, reproductive healthcare, and the confidence that comes from 
+    being supported and understood. 
+  </p>
+  <p>
+    From school outreach programs to emergency medical aid and donation drives, 
+    BlooMee stands for more than just awareness — we stand for change, one period at a time. 💕
+  </p>
+</section>
+  <!-- NGO Partners Section -->
+  <section class="ngo-section">
+    <h2>🤝 Our Partners in Change</h2>
+    <div class="ngo-grid">
+      <div class="ngo-card">
+        <img src="assets/ngo1.jpeg" alt="NGO 1">
+        <h3>Inua Dada Foundation</h3>
+        <p>Providing sanitary products to rural and low-income schools across Kenya.</p>
+      </div>
+
+      <div class="ngo-card">
+        <img src="assets/ngo2.jpeg" alt="NGO 2">
+        <h3>My Flow Foundation KE</h3>
+        <p>Empowering young women through menstrual health education and leadership training.</p>
+      </div>
+
+      <div class="ngo-card">
+        <img src="assets/ngo3.jpeg" alt="NGO 3">
+        <h3>Girl Aid Foundation</h3>
+        <p>Offering support, awareness, and medical aid for women battling endometriosis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Support Form -->
+<section class="community-section" style="max-width:700px; margin:60px auto; padding:30px; border:1px solid #ddd; border-radius:12px; box-shadow:0 4px 15px rgba(7, 6, 6, 0.08);">
+  <h2 style="text-align:center; color:#080708;">📍 Tell Us Where Help Is Needed</h2>
+  <p style="text-align:center; color:#080708;">Know a school, community, or group that could benefit from BlooMee’s support? Fill in the form below.</p>
+
+  <form class="community-form" style="display:flex; flex-direction:column; gap:15px; margin-top:20px;">
+    <input type="text" id="cf-name" placeholder="Full Name" required style="padding:12px; border:1px solid #ccc; border-radius:8px;">
+    <input type="tel" id="cf-phone" placeholder="Phone Number" required style="padding:12px; border:1px solid #ccc; border-radius:8px;">
+    <input type="email" id="cf-email" placeholder="Email Address" required style="padding:12px; border:1px solid #ccc; border-radius:8px;">
+    <input type="text" id="cf-location" placeholder="Location / Community Name" required style="padding:12px; border:1px solid #ccc; border-radius:8px;">
+    <select id="cf-ngo" style="padding:12px; border:1px solid #ccc; border-radius:8px; max-height:140px; overflow:auto;">
+      <option value="">NGO (if applicable)</option>
+      <option>Inua Dada Foundation</option>
+      <option>My Flow Foundation KE</option>
+      <option>Girl Aid Foundation</option>
+      <option>ZanaAfrica</option>
+      <option>Huru International</option>
+      <option>Red Cross Kenya</option>
+    </select>
+    <textarea id="cf-message" placeholder="Describe the need or issue..." required style="padding:12px; border:1px solid #ccc; border-radius:8px; min-height:120px;"></textarea>
+    
+    <button type="submit" style="padding:14px; background:#d38c9d; color:#0a0909; border:none; border-radius:10px; font-size:16px; font-weight:bold; cursor:pointer;">
+      Submit Request
+    </button>
+
+    <!-- Success Message -->
+    <p id="form-message" style="display:none; text-align:center; color:green; font-weight:bold; margin-top:10px; transition:opacity 0.5s;"></p>
+  </form>
+</section>
+
+<script>
+  const communityForm = document.querySelector(".community-form");
+  const messageBox = document.getElementById("form-message");
+
+  communityForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    if (!token) { alert('Please log in to submit.'); return; }
+    const payload = {
+      location: document.getElementById('cf-location').value.trim(),
+      ngo: document.getElementById('cf-ngo').value,
+      message: document.getElementById('cf-message').value.trim()
+    };
+    if (!payload.location || !payload.message) { alert('Please fill in required fields.'); return; }
+    try {
+      const res = await fetch('http://localhost:5000/api/ngo/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      messageBox.textContent = data.message || '✅ Request submitted successfully! You will receive an email once your request has been reviewed.';
+      messageBox.style.display = 'block';
+      messageBox.style.opacity = '1';
+      setTimeout(() => { messageBox.style.opacity = '0'; setTimeout(()=> messageBox.style.display='none', 500); }, 4000);
+      communityForm.reset();
+    } catch (err) {
+      alert('Network error. Please try again.');
+    }
+  });
+</script>
+
+  <!-- Donation Section -->
+<section class="donation-section" style="max-width:700px; margin:60px auto; padding:30px; border:1px solid #ddd; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.08); text-align:center;">
+  <h2 style="color:#000;">GIVING BACK TO THE COMMUNITY 💕🌸</h2>
+  <p style="color:#333; margin-bottom:20px;">Your donation helps fund pads, community education, and medical support for girls and women in need.</p>
+
+  <div class="donate-buttons" style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+    <button class="donate-btn" data-amount="500" style="padding:12px 20px; background:#d38c9d; border:none; border-radius:10px; color:#fff; font-weight:bold; cursor:pointer;">Donate KSh 500</button>
+    <button class="donate-btn" data-amount="1000" style="padding:12px 20px; background:#d38c9d; border:none; border-radius:10px; color:#fff; font-weight:bold; cursor:pointer;">Donate KSh 1000</button>
+    <button class="donate-btn" data-amount="custom" style="padding:12px 20px; background:#d38c9d; border:none; border-radius:10px; color:#fff; font-weight:bold; cursor:pointer;">Custom Amount</button>
+  </div>
+</section>
+
+<!-- Donation Popup -->
+<div id="donation-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); align-items:center; justify-content:center;">
+  <div style="background:#ffff; padding:30px; border-radius:12px; width:90%; max-width:400px; text-align:center; position:relative;">
+    <span id="close-modal" style="position:absolute; top:10px; right:15px; font-size:22px; cursor:pointer;">&times;</span>
+    <h3 style="color:#070707;">🎁 Make a Donation</h3>
+    <p style="color:#0a0a0a;">Enter the amount you’d like to contribute:</p>
+
+    <input type="number" id="donation-amount" placeholder="Enter amount in KSh" style="padding:10px; width:100%; border:1px solid #ccc; border-radius:8px; margin:10px 0;">
+    <input type="tel" id="phone-number" placeholder="M-Pesa Phone Number (e.g., 0795 979470)" style="padding:10px; width:100%; border:1px solid #ccc; border-radius:8px; margin-bottom:15px;" value="0795 979470">
+
+    <button id="donate-now" style="padding:12px; width:100%; background:#d38c9d; border:none; border-radius:8px; color:#fff; font-weight:bold; cursor:pointer;">Proceed with M-Pesa</button>
+
+    <p id="donation-message" style="display:none; color:green; font-weight:bold; margin-top:15px;"></p>
+  </div>
+</div>
+
+<script>
+  const donateButtons = document.querySelectorAll(".donate-btn");
+  const modal = document.getElementById("donation-modal");
+  const closeModal = document.getElementById("close-modal");
+  const donationAmountInput = document.getElementById("donation-amount");
+  const donationMessage = document.getElementById("donation-message");
+
+  donateButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const amount = button.dataset.amount;
+      modal.style.display = "flex";
+      donationMessage.style.display = "none";
+      donationAmountInput.value = amount !== "custom" ? amount : "";
+    });
+  });
+
+  closeModal.addEventListener("click", () => modal.style.display = "none");
+
+  document.getElementById("donate-now").addEventListener("click", async () => {
+    const amount = donationAmountInput.value;
+    const phone = document.getElementById("phone-number").value;
+
+    if (!amount || !phone) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    donationMessage.textContent = "✅ Donation initiated! You’ll receive an M-Pesa prompt on your phone shortly.";
+    donationMessage.style.display = "block";
+
+    // Simulate/sandbox call — hook here for live Daraja if desired
+    try {
+      await fetch("http://localhost:5000/api/ngo/dummy-mpesa", { method: "POST" });
+    } catch (_) {}
+    setTimeout(() => modal.style.display = "none", 4000);
+  });
+</script>
+
+  <!-- Testimonials Section -->
+  <section class="testimonial-section">
+    <h2>🎥 Real Stories, Real Impact</h2>
+    <div class="video-grid">
+      <div class="video-card" onclick="window.open('https://www.youtube.com/watch?v=pG5LqS4hBok', '_blank')">
+        <img src="https://img.youtube.com/vi/SGeV5iH8unE/hqdefault.jpg" alt="Testimonial 1">
+        <span class="play-icon">▶</span>
+        <h4>Grace – School Outreach Beneficiary</h4>
+      </div>
+
+      <div class="video-card" onclick="window.open('https://www.youtube.com/watch?v=sE0Y2WgCR1c', '_blank')">
+        <img src="https://img.youtube.com/vi/xhrPbKsA-QA/hqdefault.jpg" alt="Testimonial 2">
+        <span class="play-icon">▶</span>
+        <h4>Fatma – Volunteer Experience</h4>
+      </div>
+
+      <div class="video-card" onclick="window.open('https://www.youtube.com/watch?v=k4V3Mo61fJM', '_blank')">
+        <img src="https://img.youtube.com/vi/b0c7m9hanTU/hqdefault.jpg" alt="Testimonial 3">
+        <span class="play-icon">▶</span>
+        <h4>Community Impact Story</h4>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-container").innerHTML = data);
+  </script>
+  <!-- Floating Hearts + Flowers Background -->
+<div class="floating-bg" id="floating-bg"></div>
+
+<script>
+  // Floating hearts and flowers generator
+  const container = document.getElementById("floating-bg");
+  const symbols = ["💗", "🌸", "💖", "🌼"];
+  
+  function createFloat() {
+    const span = document.createElement("span");
+    span.classList.add(Math.random() > 0.5 ? "heart" : "flower");
+    span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    span.style.left = Math.random() * 100 + "vw";
+    span.style.animationDuration = (4 + Math.random() * 4) + "s";
+    container.appendChild(span);
+    setTimeout(() => span.remove(), 8000);
+  }
+
+  setInterval(createFloat, 700);
+
+  // Donation thank-you popups
+  document.querySelectorAll('.donate-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      alert("💖 Thank you for supporting BlooMee’s cause — your kindness makes a difference!");
+    });
+  });
+</script>
+
+<script>
+  // Check if token exists
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    // No token → redirect to login
+    alert('Access denied. Please log in first.');
+    window.location.href = 'login.html';
+  }
+</script>
+</body>
+</html>

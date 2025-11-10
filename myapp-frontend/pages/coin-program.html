@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BlooMee Coins Program</title>
+  <link rel="stylesheet" href="../css/footer.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #fff;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #d38c9d;
+      color: #fff;
+      padding: 10px 20px;
+    }
+    header .logo { font-size: 24px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 15px; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+
+    /* Banner */
+    .banner-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Container */
+    .container {
+      flex: 1;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .container h2 { color: #d38c9d; margin-bottom: 20px; }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .card {
+      padding: 20px;
+      border-radius: 10px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      min-height: 150px;
+    }
+    .burgundy { background-color: #742539; }
+    .teal { background-color: #327ddf; }
+
+    .card h3 { margin: 0 0 10px; font-size: 20px; }
+    .card p { margin: 0; font-size: 16px; line-height: 1.4; }
+
+    .love-number {
+      display: inline-block;
+      background-color: #fff;
+      color: #800020;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      font-weight: bold;
+      font-size: 16px;
+      margin-left: 5px;
+    }
+
+    /* How to Use */
+    .how-to-use {
+      background-color: #800020;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: left;
+      margin: 0 20px 40px 20px;
+    }
+    .how-to-use h3 { margin-top: 0; margin-bottom: 10px; }
+    .how-to-use p { margin: 5px 0; line-height: 1.5; }
+
+    /* Follow Section */
+    #bloomee-follow {
+      text-align: center;
+      padding: 20px;
+    }
+    #bloomee-follow h2 { margin-bottom: 10px; }
+    #follow-btn {
+      padding: 10px 20px;
+      background-color: #d38c9d;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+    #follow-btn:hover { opacity: 0.8; }
+    .bloomee-text {
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.5;
+      font-size: 16px;
+    }
+
+    /* Footer */
+    #bloomee-footer {
+      background-color: #000;
+      color: #fff;
+      padding: 20px 10px;
+    }
+    #bloomee-footer .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-column { margin: 10px; min-width: 180px; }
+    .footer-column h4 { margin-bottom: 10px; }
+    .footer-column ul { list-style: none; padding: 0; }
+    .footer-column ul li { margin-bottom: 5px; }
+    .footer-column ul li a { color: #fff; text-decoration: none; }
+    .footer-column ul li a:hover { text-decoration: underline; }
+    .footer-social { text-align: center; padding-bottom: 10px; }
+    .footer-social a { color: #fff; margin: 0 10px; text-decoration: none; }
+    .footer-social a:hover { text-decoration: underline; }
+    .footer-bottom { text-align: center; margin-bottom: 10px; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">BlooMee</div>
+  <nav>
+    <a href="../home.html">Home</a>
+    <a href="../ai-buddy.html">AI Buddy</a>
+    <a href="../doctor.html">Doctor</a>
+    <a href="../ngo.html">NGO</a>
+    <a href="../period-tracker.html">Period Tracker</a>
+  </nav>
+</header>
+
+<!-- Banner -->
+<img src="../assets/images/coins-banner.jpg" alt="BlooMee Coins Banner" class="banner-image">
+
+<div class="container">
+  <h2>BlooMee Coins Program</h2>
+
+  <!-- Cards -->
+  <div class="cards">
+    <div class="card burgundy">
+      <h3>SIGNUP</h3>
+      <p>Sign up and instantly get <span class="love-number">100 ❤️</span> points</p>
+    </div>
+    <div class="card teal">
+      <h3>SUBSCRIBE TO GET SURPRISES</h3>
+      <p>Subscribe to our app and get <span class="love-number">100 ❤️</span> points</p>
+    </div>
+    <div class="card burgundy">
+      <h3>BIRTHDAY SURPRISE</h3>
+      <p>Tell us your birthday and receive <span class="love-number">200 ❤️</span> points redeemable on the app.</p>
+    </div>
+    <div class="card teal">
+      <h3>HAPPY BUYING</h3>
+      <p>Earn points equal to <span class="love-number">8% ❤️</span> of your order total in the e-shop.</p>
+    </div>
+    <div class="card burgundy">
+      <h3>FEEDBACK</h3>
+      <p>Earn 40 points by leaving a comment! Extra <span class="love-number">80 ❤️</span> points for reviews over 80 words. Extra 60 points for reviews with product images.</p>
+    </div>
+    <div class="card teal">
+      <h3>LOVE</h3>
+      <p>Tap the like on a comment to get <span class="love-number">5 ❤️</span> points.</p>
+    </div>
+  </div>
+
+  <!-- How to Use -->
+  <div class="how-to-use">
+    <h3>How to Use</h3>
+    <p><strong>Shop and Save:</strong> Redeem points for a discount of up to 8% off your order total.</p>
+    <p><strong>Reward Gifts:</strong> Collect points and redeem gifts in the Points Mall (app exclusive).</p>
+    <p><strong>Birthday Points:</strong> Birthday points are valid for one month only.</p>
+  </div>
+</div>
+
+<!-- Follow Section -->
+<section id="bloomee-follow">  
+  <h2>@BlooMeeKenya</h2>  
+  <button id="follow-btn">Follow Us</button>  
+  <p class="bloomee-text">  
+    🌸 Believe every period should be stress-free and empowering?<br>  
+    Join BlooMee to combine care, confidence, and technology.<br><br>  
+    💬 Share your moments — chat with AI buddy, learn in period education hub, or get doctor/NGO support.<br><br>  
+    Post on Instagram using #BlooMeeKenya and tag @BlooMeeKenya.<br><br>  
+    Stand a chance to receive a special care package.<br>  
+    Let’s empower each other — one period at a time.<br><br>  
+    #BlooMee #PeriodCareReimagined #EmpowerWithBlooMee  
+  </p>  
+</section>  
+
+<!-- Footer -->
+<footer id="bloomee-footer">  
+  <div class="footer-content">
+    <div class="footer-column">  
+      <h4>Customer Service</h4>  
+      <ul>  
+        <li>Service Hours: Mon–Sat, 9AM–6PM</li>  
+        <li>Customer Support</li>  
+        <li><a href="tel:0727555555">Phone: 0727 555 555</a></li>  
+        <li><a href="mailto:care@bloomee.com">Email: care@bloomee.com</a></li>  
+      </ul>  
+    </div>  
+
+    <div class="footer-column">  
+      <h4>About BlooMee</h4>  
+      <ul>  
+        <li><a href="./about-us.html">About Us</a></li>  
+        <li><a href="./where-to-buy.html">Where to Buy</a></li>  
+        <li><a href="./coin-program.html">BlooMee Coins Program</a></li>  
+        <li><a href="./contact.html">Contact Us</a></li>  
+      </ul>  
+    </div>  
+
+    <div class="footer-column">  
+      <h4>Terms</h4>  
+      <ul>  
+        <li><a href="./warranty.html">Warranty</a></li>  
+        <li><a href="./shipping.html">Shipping & Delivery</a></li>  
+        <li><a href="./returns.html">Returns & Refunds</a></li>  
+        <li><a href="./privacy.html">Privacy Policy</a></li>  
+      </ul>  
+    </div>  
+
+    <div class="footer-column">  
+      <h4>Get Help</h4>  
+      <ul>  
+        <li><a href="./shopping-guide.html">Online Shopping Guide</a></li>  
+        <li><a href="./track-order.html">Track Order</a></li>  
+        <li><a href="./product-authentification.html">Product Authentication</a></li>  
+      </ul>  
+    </div>  
+  </div>  
+
+  <div class="footer-social">
+    <a href="https://www.instagram.com/bloomee_ke?igsh=MWp3ZWJlY2ZrMnY0OQ==" target="_blank">📸Instagram</a> | 
+    <a href="https://www.facebook.com/share/1HDRoNbPvX/" target="_blank">📘Facebook</a> | 
+    <a href="https://www.tiktok.com/@bloomee_ke?_t=ZM-90zC2iswIp6&_r=1" target="_blank">🎶TikTok</a>
+  </div>  
+
+  <p class="footer-bottom">© 2025 BlooMee Kenya. All rights reserved.</p>  
+</footer>
+
+<script>
+  document.getElementById('follow-btn').addEventListener('click', () => {
+    window.open('https://www.tiktok.com/@bloomee_ke?_t=ZM-90zC2iswIp6&_r=1', '_blank');
+  });
+</script>
+
+</body>
+</html>

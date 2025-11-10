@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BlooMee 🌸 — Onboarding</title>
+  <link rel="stylesheet" href="onboarding.css" />
+</head>
+<body>
+  <!-- Background layers -->
+  <div class="bg-solid"></div>
+  <div class="bg-pattern"></div>
+
+  <header class="top-header">
+    <div class="logo-container">
+      <a href="home.html" class="logo">
+        <img src="assets/bloomee-logo.jpeg" alt="BlooMee Logo" class="header-logo" />
+      </a>
+      <span class="brand-name">BlooMee 🌸</span>
+    </div>
+  </header>
+
+  <!-- Onboarding content -->
+  <main class="onboarding-container">
+    <h1>Welcome to BlooMee 🌸</h1>
+    
+    <!-- Extra onboarding text -->
+    <section class="onboarding-info">
+      <p>Heyyy!👋 It’s your girl Hosea, back again and today I’ve got something special for you.</p>
+      <p>Welcome to <strong>BlooMee</strong> — your go-to space for all things feminine health.</p>
+      <p>Down below is a quick video, giving you a little tour so you can move around the app easily. Don’t worry, I got you! 😉</p>
+
+      <ul>
+        <li>👉 <strong>Shop</strong>: Find all the essentials — pads, liners, wipes, and comfort goodies.</li>
+        <li>👉 <strong>Period Tracker 🗓️</strong>: Stay in sync with your cycle, ovulation, and get helpful tips.</li>
+        <li>👉 <strong>Doctors 👩🏽‍⚕️</strong>: Connect with specialists anytime, at affordable prices.</li>
+        <li>👉 <strong>AI Buddy 🤖💖</strong>: Your smart friend for self-care, body knowledge, and health tips.</li>
+        <li>👉 <strong>NGO section</strong>: Support or donate to NGOs making pads & education accessible.</li>
+      </ul>
+
+      <p>✨ And here’s something cool: <strong>Bloom Coins 🌸💰</strong>! Earn them as you use the app and spend them later on products — especially pads.</p>
+      <p>Thanks for hanging out with me on this quick tour. Now go ahead, explore, and enjoy the journey with BlooMee. 💕</p>
+    </section>
+
+    <!-- Video -->
+    <div class="video-wrapper">
+      <video id="introVideo" width="100%" controls poster="assets/video-thumbnail.jpg">
+        <source src="assets/intro.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+  <button id="skipBtn" class="btn skip">Skip</button>
+</div>
+  </main>
+
+  <script>
+    // Auto-scroll to video and play when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('introVideo');
+      if (video) {
+        video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // try to autoplay if allowed; otherwise user can press play
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+          playPromise.catch(()=>{});
+        }
+        // when video ends, go home smoothly
+        video.addEventListener('ended', () => {
+          window.location.href = 'home.html';
+        });
+      }
+    });
+  </script>
+
+  <script>
+    // Skip button functionality
+    document.getElementById('skipBtn').addEventListener('click', () => {
+      window.location.href = 'home.html'; // Replace with your actual home page file if different
+    });
+  </script>
+  
+  <script>
+  document.getElementById("skipBtn").addEventListener("click", async () => {
+    const token = localStorage.getItem("token"); // from login
+
+    if (!token) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/api/onboarding/complete", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("✅ Onboarding completed:", data);
+        window.location.href = "home.html";
+      } else {
+        console.error("❌ Error:", data);
+      }
+    } catch (error) {
+      console.error("⚠️ Network error:", error);
+    }
+  });
+</script>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-container").innerHTML = data);
+  </script>
+</body>
+</html>

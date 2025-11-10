@@ -1,0 +1,74 @@
+#bloomee-follow {
+  text-align: center;
+  background: #f8f8f8;
+  padding: 40px 20px;
+  color: #000;
+}
+
+#bloomee-follow h2 {
+  font-size: 2rem;
+  color: #d81b60;
+}
+
+#follow-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 10px 0 20px;
+}
+
+#bloomee-footer {
+  background: #111;
+  color: #ccc;
+  padding: 40px 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.footer-column h4 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.footer-social {
+  margin-top: 30px;
+}
+
+.footer-social a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.85rem;
+}
+
+#bloomee-footer a {
+  color: #fff;          /* your link color */
+  text-decoration: none; /* removes the underline */
+}
+
+#bloomee-footer a:hover {
+  color: #d38c9d;       /* optional hover color */
+  text-decoration: none; /* keeps no underline on hover */
+}
