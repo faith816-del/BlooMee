@@ -74,9 +74,9 @@ BlooMee also supports SDG 4 by offering accessible **reproductive health educati
 ---
 
 ## 🚀 Deployment & Access  
-- **GitHub Repository:** [link here]  
-- **Live Website:** [deployment link here]  
-- **Downloadable PWA:** (optional, if built)  
+- **GitHub Repository:** [https://github.com/faith816-del/BlooMee]  
+- **Live Website:** frontend [https://faith816-del.github.io/BlooMee/]  backend [https://myapp-backend-xo8u.onrender.com]
+  
 
 ---
 
