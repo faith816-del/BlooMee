@@ -1,33 +1,65 @@
-/* Mobile-specific overrides for responsive layout */
+/* ===== MOBILE-FRIENDLY LAYOUT ===== */
 @media (max-width: 768px) {
 
-    /* Product grid adjustments */
-    .products-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 0.5rem;
-    }
+  /* Product row grid for mobile */
+  .product-row {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+    padding: 10px;
+  }
 
-    /* Header adjustments */
-    header nav {
-        display: flex;
-        flex-wrap: wrap; /* wrap nav links to next line if needed */
-    }
+  .product-card img {
+    height: auto !important;
+    max-height: 250px;
+  }
 
-    header nav a {
-        font-size: 0.9rem; /* slightly smaller font for mobile */
-        margin: 5px;       /* reduce spacing */
-    }
+  /* Carousel items */
+  .product-carousel {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
 
-    /* Optional: scale text and padding for other sections */
-    .login-box, .signup-box, .footer, .onboarding-container {
-        font-size: 0.9rem;
-        padding: 10px;
-    }
+  .carousel-item {
+    min-width: 80%;  /* makes them fit nicely on small screens */
+    max-width: 90%;
+    margin: 0 auto;
+    height: auto !important;
+  }
 
-    /* Optional: scale images or videos to fit mobile */
-    img, video {
-        max-width: 100%;
-        height: auto;
-    }
+  .carousel-item img {
+    height: auto !important;
+  }
+
+  /* Category grid single column */
+  .category-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .category-box img {
+    height: auto !important;
+  }
+
+  /* Header flex adjustments */
+  .header-inner {
+    flex-wrap: wrap;        /* allows wrapping on small screens */
+    justify-content: space-between;
+  }
+
+  .main-nav ul {
+    flex-wrap: wrap;         /* nav links will wrap instead of overflowing */
+    gap: 12px;
+  }
+
+  .logo img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  /* Right icons shrink */
+  .right {
+    gap: 6px;
+  }
 }
