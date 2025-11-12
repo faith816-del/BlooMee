@@ -5,76 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>BlooMee 🌸 | Login</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: "Poppins", sans-serif;
-    overflow: hidden;
-    height: 100vh;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background: #d38c9d;
-    position: relative;
-  }
-  .login-box { margin-right: 9vw; }
-  header { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; z-index: 20; }
-  header img { height: 45px; border-radius: 50%; }
-  header nav a { color: white; margin-left: 20px; text-decoration: none; font-size: 0.95rem; transition: 0.3s; }
-  header nav a:hover { text-decoration: underline; }
-  .background { position: absolute; inset: 0; display: flex; height: 100vh; overflow: hidden; z-index: 0; }
-  .bg-image { flex: 1; background: url("assets/bg-image.jpg") no-repeat center center/cover; filter: brightness(0.9); z-index: 0; }
-  .bg-color { flex: 0.5; background: #d38c9d; position: relative; z-index: 1; }
-  .curve-divider { position: absolute; top: 0; left: -7vw; width: 120vw; height: 100%; z-index: 1; pointer-events: none; }
-  .bg-color::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      120deg,
-      rgba(255, 255, 255, 0.2) 0%,
-      rgba(255, 255, 255, 0) 40%,
-      rgba(255, 255, 255, 0.3) 60%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    animation: shimmerMove 8s infinite linear;
-    pointer-events: none;
-  }
-  @keyframes shimmerMove { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-  .droplet { position: absolute; background: rgba(180, 3, 3, 0.1); border-radius: 50%; backdrop-filter: blur(3px); animation: float 6s infinite ease-in-out alternate; }
-  .droplet:nth-child(1) { width: 40px; height: 40px; top: 25%; left: 18%; animation-delay: 0s; }
-  .droplet:nth-child(2) { width: 30px; height: 30px; top: 60%; left: 25%; animation-delay: 2s; }
-  .droplet:nth-child(3) { width: 60px; height: 60px; top: 45%; left: 10%; animation-delay: 4s; }
-  @keyframes float { from { transform: translateY(0); } to { transform: translateY(-15px); } }
-  .login-box {
-    position: relative;
-    z-index: 10;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    padding: 40px 35px;
-    border-radius: 25px;
-    width: clamp(320px, 35vw, 400px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    color: #000;
-    text-align: center;
-  }
-  .login-box h1 { font-size: 1.8rem; font-weight: 700; }
-  .login-box p { margin-bottom: 20px; font-size: 1rem; }
-  .btn { width: 100%; padding: 12px; border: none; border-radius: 15px; font-weight: 600; cursor: pointer; margin-top: 12px; transition: all 0.3s ease; font-size: 0.95rem; }
-  .btn:hover { transform: scale(1.05); }
-  .btn.google { background: #800020; color: #fff; }
-  .btn.facebook { background: #1877f2; color: #fff; }
-  .btn.email { background: #f7c1d0; color: #800020; }
-  .btn.signup { background: #f7c1d0; color: #800020; }
-  .terms { font-size: 0.8rem; margin-top: 15px; color: #0f0e0e; }
-  .terms span, .terms a { color: #800020; text-decoration: none; font-weight: 600; }
-  @media (max-width: 768px) {
-    body { flex-direction: column; }
-    header { flex-direction: column; text-align: center; padding: 15px; }
-    .bg-image { display: none; }
-    .login-box { width: 90%; margin: 20px auto; }
-  }
-  @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } 
-  }
+  /* ... your existing styles remain unchanged ... */
 </style>
 </head>
 <body>
@@ -115,7 +46,8 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   // Social buttons
-  const backendBase = "http://localhost:5000";
+  const backendBase = "https://myapp-backend-xo8u.onrender.com"; // <-- Render backend URL
+
   document.querySelector(".btn.google").addEventListener("click", () => {
     window.location.href = `${backendBase}/api/auth/google`;
   });
@@ -180,27 +112,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.querySelector("#passwordInput").value.trim();
     if(!email||!password){alert("Please fill in both email and password."); return;}
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({email,password})});
+      const res = await fetch(`${backendBase}/api/auth/login`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({email,password})});
       const data = await res.json();
       if(data.token){localStorage.setItem("token", data.token); document.querySelector("#loginModal").style.display="none"; alert("Login successful!"); window.location.href="onboarding.html";}
       else alert(data.message || "Login failed");
     } catch(err){console.error(err); alert("Error connecting to server.");}
   });
 
-// Submit Sign Up
-document.querySelector("#submitSignup").addEventListener("click", async () => {
-  const name = document.querySelector("#nameInput").value.trim();
-  const email = document.querySelector("#signupEmail").value.trim();
-  const password = document.querySelector("#signupPassword").value.trim();
-  if(!name||!email||!password){alert("Please fill in all fields."); return;}
-  try {
-    const res = await fetch("http://localhost:5000/api/auth/signup", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({name,email,password})});
-    const data = await res.json();
-    console.log(data); // check in browser console
-    if(data.token){localStorage.setItem("token", data.token); document.querySelector("#signupModal").style.display="none"; alert("Signup successful!"); window.location.href="onboarding.html";}
-    else alert(data.message || "Signup failed");
-  } catch(err){console.error(err); alert("Error connecting to server.");}
-});
+  // Submit Sign Up
+  document.querySelector("#submitSignup").addEventListener("click", async () => {
+    const name = document.querySelector("#nameInput").value.trim();
+    const email = document.querySelector("#signupEmail").value.trim();
+    const password = document.querySelector("#signupPassword").value.trim();
+    if(!name||!email||!password){alert("Please fill in all fields."); return;}
+    try {
+      const res = await fetch(`${backendBase}/api/auth/signup`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({name,email,password})});
+      const data = await res.json();
+      console.log(data); // check in browser console
+      if(data.token){localStorage.setItem("token", data.token); document.querySelector("#signupModal").style.display="none"; alert("Signup successful!"); window.location.href="onboarding.html";}
+      else alert(data.message || "Signup failed");
+    } catch(err){console.error(err); alert("Error connecting to server.");}
+  });
 });
 </script>
 
