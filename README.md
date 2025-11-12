@@ -96,7 +96,7 @@ BlooMee also supports SDG 4 by offering accessible **reproductive health educati
 ---
 
 ## 📽️ Pitch Deck  
-A separate **pitch deck presentation (Canva/PowerPoint)** will be included in the repo under `assets/pitch-deck/` and linked here.  
+A separate **pitch deck presentation (Canva/PowerPoint)** will be included in the repo here [  https://www.canva.com/design/DAGxQwqKIUQ/r4-DSCD1xxfwJGgImfT1sw/edit?utm_content=DAGxQwqKIUQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton]
 
 ---
 
@@ -141,7 +141,7 @@ BlooMee 🌸 has been designed with a **calm, feminine, and professional aesthet
 ---
 
 ## 📽️ Pitch Deck / Presentation
-A separate **pitch deck presentation** (Canva or PowerPoint) is included in the repo under `assets/pitch-deck/` and linked here. This showcases the app concept, workflow, and user journey.
+A separate **pitch deck presentation** (Canva)  and linked here [https://www.canva.com/design/DAGxQwqKIUQ/r4-DSCD1xxfwJGgImfT1sw/edit?utm_content=DAGxQwqKIUQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton]. This showcases the app concept, workflow, and user journey.
 
 ---
 
