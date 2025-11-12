@@ -1,0 +1,33 @@
+/* Mobile-specific overrides for responsive layout */
+@media (max-width: 768px) {
+
+    /* Product grid adjustments */
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0.5rem;
+    }
+
+    /* Header adjustments */
+    header nav {
+        display: flex;
+        flex-wrap: wrap; /* wrap nav links to next line if needed */
+    }
+
+    header nav a {
+        font-size: 0.9rem; /* slightly smaller font for mobile */
+        margin: 5px;       /* reduce spacing */
+    }
+
+    /* Optional: scale text and padding for other sections */
+    .login-box, .signup-box, .footer, .onboarding-container {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    /* Optional: scale images or videos to fit mobile */
+    img, video {
+        max-width: 100%;
+        height: auto;
+    }
+}
