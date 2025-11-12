@@ -194,7 +194,7 @@ document.querySelector("#submitSignup").addEventListener("click", async () => {
   const password = document.querySelector("#signupPassword").value.trim();
   if(!name||!email||!password){alert("Please fill in all fields."); return;}
   try {
-    const res = await fetch(`${backendBase}/api/auth/login`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({name,email,password})});
+    const res = await fetch(`${backendBase}/api/auth/signup`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({name,email,password})});
     const data = await res.json();
     console.log(data); // check in browser console
     if(data.token){localStorage.setItem("token", data.token); document.querySelector("#signupModal").style.display="none"; alert("Signup successful!"); window.location.href="onboarding.html";}
